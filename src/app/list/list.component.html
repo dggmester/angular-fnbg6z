@@ -1,0 +1,45 @@
+<button (click)="test()">TEST</button>
+<div>
+  <div>Települések</div>
+  <div>
+    <select (change)="filterItems($event.target.value)">
+      <option value="">--Szűrés településre--</option>
+      <option *ngFor="let region of regions" value="{{ region }}">
+        {{ region }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <select (change)="sortItems($event.target.value)">
+      <option value="">--Rendezés--</option>
+      <option value="name">Név</option>
+      <option value="population">Lakosság</option>
+      <option value="region">Település</option>
+    </select>
+  </div>
+</div>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Név</th>
+        <th>Rang</th>
+        <th>Lakosság</th>
+        <th>Terület</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let item of items_filtred"
+        (click)="selectItem(item)"
+        [class.selected]="item.name === selectedItemName"
+      >
+        <td class="string">{{ item.name }}</td>
+        <td class="string">{{ item.type }}</td>
+        <td class="number">{{ item.population }}</td>
+        <td class="number">{{ item.area.toFixed(1) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<item [selectedItem]="selectedItem"></item>
