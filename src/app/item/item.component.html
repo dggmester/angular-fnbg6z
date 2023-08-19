@@ -1,6 +1,6 @@
-<div *ngIf="!selectedItem">Nincs Kiválasztott város</div>
+<div *ngIf="!selectedItem"><h3>Nincs Kiválasztott város</h3></div>
 <div *ngIf="selectedItem">
-  <h2>{{ selectedItem.name }}</h2>
+  <h3>{{ selectedItem.name }}</h3>
   <p>Rang: {{ selectedItem.type }}</p>
   <p>Lakosság: {{ selectedItem.population }}</p>
   <p>Terület: {{ selectedItem.area }}</p>

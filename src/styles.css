@@ -1,0 +1,85 @@
+/* Általános stílusok */
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  background-color: #cccccc;
+  margin: 0;
+}
+
+/* Konténer stílusok */
+.container {
+  width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: white;
+  display: flex;
+}
+.container_left {
+  width: 900px;
+  padding: 30px;
+}
+.citi_table {
+  width: 100%;
+  border: 1px solid #aaaaaa;
+  border-spacing: 0;
+}
+.citi_table thead {
+  display: block;
+  background-color: lightgray;
+}
+.citi_table thead tr th,
+.citi_table tbody tr td {
+  width: 195px;
+}
+
+.citi_table tbody {
+  display: block;
+  overflow: auto;
+  height: 300px;
+  width: 100%;
+}
+
+.citi_table tr {
+  line-height: 30px;
+}
+
+.container_right {
+  width: 300px;
+  padding: 30px;
+  background-color: #bbbbbb;
+}
+
+/* Lista stílusok */
+.list_header {
+  display: flex;
+  border-bottom: 2px solid #aaaaaa;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.list_header * {
+  margin: 0;
+}
+
+.list_filter {
+  margin-left: auto;
+}
+
+.list_filter,
+.list_sort {
+  align-items: flex-end;
+}
+
+.selected {
+  background-color: lightseagreen;
+}
+
+.type_string {
+  text-align: left;
+}
+.type_number {
+  text-align: right;
+}
+
+tr.selected {
+  background-color: lightseagreen;
+}

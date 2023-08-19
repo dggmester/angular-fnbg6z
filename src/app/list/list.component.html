@@ -1,7 +1,6 @@
-<button (click)="test()">TEST</button>
-<div>
-  <div>Települések</div>
-  <div>
+<div class="list_header">
+  <div class="list_title"><h3>Települések</h3></div>
+  <div class="list_filter">
     <select (change)="filterItems($event.target.value)">
       <option value="">--Szűrés településre--</option>
       <option *ngFor="let region of regions" value="{{ region }}">
@@ -9,7 +8,7 @@
       </option>
     </select>
   </div>
-  <div>
+  <div class="list_sort">
     <select (change)="sortItems($event.target.value)">
       <option value="">--Rendezés--</option>
       <option value="name">Név</option>
@@ -18,28 +17,30 @@
     </select>
   </div>
 </div>
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th>Név</th>
-        <th>Rang</th>
-        <th>Lakosság</th>
-        <th>Terület</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let item of items_filtred"
-        (click)="selectItem(item)"
-        [class.selected]="item.name === selectedItemName"
-      >
-        <td class="string">{{ item.name }}</td>
-        <td class="string">{{ item.type }}</td>
-        <td class="number">{{ item.population }}</td>
-        <td class="number">{{ item.area.toFixed(1) }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="list_body" *ngIf="!items_filtred">Adatok betöltése...</div>
+<div class="list_body" *ngIf="items_filtred">
+  <div>
+    <table class="citi_table">
+      <thead>
+        <tr>
+          <th class="type_string">Név</th>
+          <th class="type_string">Rang</th>
+          <th class="type_number">Lakosság</th>
+          <th class="type_number">Terület(km²)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of items_filtred"
+          (click)="selectItem(item)"
+          [class.selected]="item.name === selectedItemName"
+        >
+          <td class="type_string">{{ item.name }}</td>
+          <td class="type_string">{{ item.type }}</td>
+          <td class="type_number">{{ item.population }}</td>
+          <td class="type_number">{{ item.area.toFixed(1) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<item [selectedItem]="selectedItem"></item>

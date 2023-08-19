@@ -14,6 +14,7 @@ export class ListComponent {
   selectedItemName: string | null = null;
   selectedItem: citi;
   test() {
+    //<!-- <button (click)="test()">TEST</button> -->
     console.log(this.items);
     console.log(this.items_filtred);
     console.log(this.regions);
@@ -23,6 +24,7 @@ export class ListComponent {
   selectItem(item: citi) {
     this.selectedItemName = item.name;
     this.selectedItem = item;
+    this.cs.setCitiValue(item);
   }
   filterItems(selectedRegion: string) {
     this.items_filtred = this.items.filter((item) => {

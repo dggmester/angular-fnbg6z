@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { citi } from '../model/citi.model';
+import { CitiService } from '../services/citi.services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'item',
@@ -7,5 +9,17 @@ import { citi } from '../model/citi.model';
   styleUrls: ['./item.component.css'],
 })
 export class ItemComponent {
-  @Input() selectedItem: citi;
+  //@Input() selectedItem: citi;
+  selectedItem: citi;
+  private subscription: Subscription;
+
+  constructor(private cs: CitiService) {
+    this.subscription = this.cs.selectedCiti$.subscribe((value) => {
+      this.selectedItem = value;
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }
